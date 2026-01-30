@@ -5,7 +5,7 @@
             <div class="slide">
                 <picture>
                     <source media="(max-width: 768px)" srcset="assets/banners/bio-metric-banners.png">
-                    <img src="assets/banners/bio-metric-banners.png" alt="Bio Metric Solutions">
+                    <img src="assets/banners/biometric-security.webp" alt="Bio Metric Solutions">
                 </picture>
             </div>
             <!-- Slide 2 -->
