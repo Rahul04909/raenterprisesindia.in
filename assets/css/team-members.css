@@ -122,11 +122,13 @@
 }
 
 .team-info {
-    padding: 25px 20px;
+    padding: 15px 10px;
+    /* Reduced padding */
 }
 
 .team-name {
-    font-size: 20px;
+    font-size: 16px;
+    /* Reduced font size */
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 5px;
@@ -135,28 +137,33 @@
 
 .team-designation {
     color: var(--accent-color);
-    font-size: 14px;
+    font-size: 12px;
+    /* Reduced font size */
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 /* Responsive adjustments */
-@media (max-width: 1400px) {
-    .team-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
-}
-
 @media (max-width: 1200px) {
+
+    /* Keep 6 columns until 1200px, then maybe drop to 4 to avoid 5-col orphan issues, or keep 6 longer? 
+       User wants single row. Let's try to keep 6 columns on 1200px screens if possible, 
+       but standard bootstrap container might be tight. 
+       Let's use min-width: 0 in grid cols to prevent overflow or allow shrinking.
+    */
     .team-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        /* Force 6 cols even on 1200px */
+        gap: 8px;
+        /* Tighter gap */
     }
 }
 
 @media (max-width: 992px) {
     .team-grid {
         grid-template-columns: repeat(3, 1fr);
+        /* Drop to 3 rows of 2, or 2 rows of 3 */
     }
 }
 
