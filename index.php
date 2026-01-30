@@ -5,16 +5,14 @@ include 'includes/header.php';
 include 'components/hero.php';
 ?>
 
-<main style="padding: 50px 0; text-align: center;">
-    <div class="container">
-        <h1>Welcome to RA ENTERPRISES</h1>
-        <p>Your Complete IT Solution Provider</p>
-    </div>
+<!-- Main Content (Currently Empty/Hidden) -->
+<main>
+    <!-- Content will go here -->
 </main>
 
 <?php
-// Typically footer would be included here
-// include 'includes/footer.php';
+// Include the footer
+include 'includes/footer.php';
 ?>
 
 </body>
