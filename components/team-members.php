@@ -9,7 +9,7 @@
             <!-- Member 2: Arjun -->
             <div class="team-card">
                 <div class="team-image-wrapper">
-                    <img src="assets/team-members/arjun.jpeg" alt="Arjun">
+                    <img src="assets/team-members/arjun-kumar.jpeg" alt="Arjun">
                     <div class="team-social">
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
