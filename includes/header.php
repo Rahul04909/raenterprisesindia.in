@@ -7,6 +7,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css?v=1.0">
     <link rel="stylesheet" href="assets/css/hero.css?v=1.0">
+    <link rel="stylesheet" href="assets/css/team-members.css?v=1.0">
     <link rel="stylesheet" href="assets/css/footer.css?v=1.0">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

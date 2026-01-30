@@ -8,6 +8,7 @@ include 'components/hero.php';
 <!-- Main Content (Currently Empty/Hidden) -->
 <main>
     <!-- Content will go here -->
+    <?php include 'components/team-members.php'; ?>
 </main>
 
 <?php
