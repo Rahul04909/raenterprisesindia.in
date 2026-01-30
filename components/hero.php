@@ -3,18 +3,13 @@
         <div class="slider-wrapper" id="sliderWrapper">
             <!-- Slide 1 -->
             <div class="slide">
-                <img src="https://placehold.co/1920x550?text=Professional+IT+Solutions" alt="Banner 1" class="desktop-banner">
-                <img src="https://placehold.co/800x800?text=IT+Solutions" alt="Banner 1 Mobile" class="mobile-banner">
+                <img src="assets/banners/bio-metric-banners.png" alt="Bio Metric Solutions" class="desktop-banner">
+                <img src="assets/banners/bio-metric-banners.png" alt="Bio Metric Solutions" class="mobile-banner">
             </div>
             <!-- Slide 2 -->
             <div class="slide">
-                <img src="https://placehold.co/1920x550?text=Web+Development+Services" alt="Banner 2" class="desktop-banner">
-                <img src="https://placehold.co/800x800?text=Web+Dev" alt="Banner 2 Mobile" class="mobile-banner">
-            </div>
-            <!-- Slide 3 -->
-            <div class="slide">
-                <img src="https://placehold.co/1920x550?text=Digital+Marketing+Experts" alt="Banner 3" class="desktop-banner">
-                <img src="https://placehold.co/800x800?text=Marketing" alt="Banner 3 Mobile" class="mobile-banner">
+                <img src="assets/banners/hk-vision-cctv-banners.jpg" alt="Hikvision CCTV Camera" class="desktop-banner">
+                <img src="assets/banners/hk-vision-cctv-banners.jpg" alt="Hikvision CCTV Camera" class="mobile-banner">
             </div>
         </div>
         
