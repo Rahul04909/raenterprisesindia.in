@@ -1,6 +1,8 @@
 <?php
 // Include the header
 include 'includes/header.php';
+// Include the hero slider
+include 'components/hero.php';
 ?>
 
 <main style="padding: 50px 0; text-align: center;">

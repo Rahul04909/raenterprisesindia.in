@@ -1,0 +1,116 @@
+/* Hero Slider Styles */
+.hero-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #f4f4f4;
+}
+
+.hero-slider {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Responsive Images logic */
+.mobile-banner {
+    display: none;
+}
+
+.desktop-banner {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .desktop-banner {
+        display: none;
+    }
+
+    .mobile-banner {
+        display: block;
+    }
+}
+
+/* Slider Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0.8);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #333;
+    font-size: 20px;
+    padding: 15px 12px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    /* Amazon-ish rounded square */
+}
+
+/* Show buttons on hover like Amazon/Flipkart */
+.hero-slider:hover .slider-btn {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+
+.prev-btn {
+    left: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.next-btn {
+    right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--accent-color);
+}
+
+/* Dots */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dot.active {
+    background: #fff;
+    transform: scale(1.2);
+}
