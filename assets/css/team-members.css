@@ -1,7 +1,14 @@
 /* Team Section Styles */
 .team-section {
-    padding: 80px 0;
+    padding: 60px 20px;
+    /* Added side padding */
     background-color: #f9f9f9;
+}
+
+.team-section .container {
+    max-width: 100%;
+    /* Override default container width */
+    padding: 0;
 }
 
 .section-title {
@@ -145,20 +152,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
-
-    /* Keep 6 columns until 1200px, then maybe drop to 4 to avoid 5-col orphan issues, or keep 6 longer? 
-       User wants single row. Let's try to keep 6 columns on 1200px screens if possible, 
-       but standard bootstrap container might be tight. 
-       Let's use min-width: 0 in grid cols to prevent overflow or allow shrinking.
-    */
-    .team-grid {
-        grid-template-columns: repeat(6, 1fr);
-        /* Force 6 cols even on 1200px */
-        gap: 8px;
-        /* Tighter gap */
-    }
-}
+/* Removed 1200px breakpoint to force 6 columns as long as possible */
 
 @media (max-width: 992px) {
     .team-grid {
