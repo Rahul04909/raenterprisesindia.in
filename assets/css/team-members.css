@@ -35,10 +35,10 @@
 
 .team-grid {
     display: grid;
-    /* Force 5 columns on desktop */
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    /* Reduced gap to fit 5 cards */
+    /* Force 6 columns on desktop */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    /* Reduced gap to fit 6 cards */
     justify-content: center;
 }
 
@@ -142,6 +142,12 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 1400px) {
+    .team-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
 @media (max-width: 1200px) {
     .team-grid {
         grid-template-columns: repeat(4, 1fr);

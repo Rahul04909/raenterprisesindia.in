@@ -5,7 +5,8 @@
             <p>Meet the dedicated professionals behind our success.</p>
         </div>
 
-        <!-- Member 2: Arjun -->
+        <div class="team-grid">
+            <!-- Member 2: Arjun -->
             <div class="team-card">
                 <div class="team-image-wrapper">
                     <img src="assets/team-members/arjun.jpeg" alt="Arjun">
@@ -20,8 +21,6 @@
                     <p class="team-designation">Managing Director</p> <!-- Designation guessed/placeholder -->
                 </div>
             </div>
-
-        <div class="team-grid">
             <!-- Member 1: Ansh Kumar -->
             <div class="team-card">
                 <div class="team-image-wrapper">
@@ -83,6 +82,21 @@
                 <div class="team-info">
                     <h3 class="team-name">Sourabh Saini</h3>
                     <p class="team-designation">Engineer</p> <!-- Designation guessed/placeholder -->
+                </div>
+            </div>
+            <!-- Member 6: Kushal Veer -->
+            <div class="team-card">
+                <div class="team-image-wrapper">
+                    <img src="assets/team-members/kushal-veer.jpeg" alt="Kushal Veer">
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Kushal Veer</h3>
+                    <p class="team-designation">Technician</p> 
                 </div>
             </div>
         </div>
