@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="team-info">
-                    <h3 class="team-name">Arjun</h3>
+                    <h3 class="team-name">Arjun Kumar</h3>
                     <p class="team-designation">Managing Director</p> <!-- Designation guessed/placeholder -->
                 </div>
             </div>
