@@ -3,13 +3,17 @@
         <div class="slider-wrapper" id="sliderWrapper">
             <!-- Slide 1 -->
             <div class="slide">
-                <img src="assets/banners/bio-metric-banners.png" alt="Bio Metric Solutions" class="desktop-banner">
-                <img src="assets/banners/bio-metric-banners.png" alt="Bio Metric Solutions" class="mobile-banner">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="assets/banners/bio-metric-banners.png">
+                    <img src="assets/banners/bio-metric-banners.png" alt="Bio Metric Solutions">
+                </picture>
             </div>
             <!-- Slide 2 -->
             <div class="slide">
-                <img src="assets/banners/hk-vision-cctv-banners.jpg" alt="Hikvision CCTV Camera" class="desktop-banner">
-                <img src="assets/banners/hk-vision-cctv-banners.jpg" alt="Hikvision CCTV Camera" class="mobile-banner">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="assets/banners/hk-vision-cctv-banners.jpg">
+                    <img src="assets/banners/hk-vision-cctv-banners.jpg" alt="Hikvision CCTV Camera">
+                </picture>
             </div>
         </div>
         

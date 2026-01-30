@@ -30,24 +30,8 @@
     object-fit: cover;
 }
 
-/* Responsive Images logic */
-.mobile-banner {
-    display: none;
-}
 
-.desktop-banner {
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .desktop-banner {
-        display: none;
-    }
-
-    .mobile-banner {
-        display: block;
-    }
-}
+/* Responsive Images logic handled by <picture> tag */
 
 /* Slider Navigation Buttons */
 .slider-btn {
