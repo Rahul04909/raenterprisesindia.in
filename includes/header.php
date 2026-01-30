@@ -11,8 +11,6 @@
 </head>
 <body>
 
-    <!-- Overlay for Mobile Menu -->
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
     <header>
         <!-- Top Bar -->
@@ -83,8 +81,6 @@
     <script>
         function toggleMenu() {
             const nav = document.getElementById('mainNav');
-            const overlay = document.getElementById('overlay');
             nav.classList.toggle('active');
-            overlay.classList.toggle('active');
         }
     </script>
