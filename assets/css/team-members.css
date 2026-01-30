@@ -177,6 +177,24 @@
     .team-grid {
         grid-template-columns: repeat(2, 1fr);
         /* Force 2 columns on mobile */
-        gap: 10px;
+        gap: 8px;
+        /* Tighter gap */
+    }
+
+    .team-info {
+        padding: 10px 5px;
+        /* Minimal padding */
+    }
+
+    .team-name {
+        font-size: 13px;
+        /* Smaller font for name */
+        margin-bottom: 2px;
+    }
+
+    .team-designation {
+        font-size: 9px;
+        /* Smaller font for designation */
+        letter-spacing: 0;
     }
 }
