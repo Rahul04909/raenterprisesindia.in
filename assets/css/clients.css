@@ -1,0 +1,74 @@
+/* Clients Section Styles */
+.clients-section {
+    padding: 60px 20px;
+    background-color: #fff;
+    overflow: hidden;
+    /* Hide overflow for ticker */
+}
+
+.clients-section .section-title {
+    margin-bottom: 40px;
+}
+
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.ticker-content {
+    display: inline-block;
+    animation: ticker 20s linear infinite;
+}
+
+.client-logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 40px;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.client-logo:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    cursor: pointer;
+}
+
+.client-logo img {
+    height: 80px;
+    /* Uniform height */
+    width: auto;
+    object-fit: contain;
+    max-width: 200px;
+}
+
+/* Ticker Animation */
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+        /* Move half way because content is duplicated */
+    }
+}
+
+/* Pause on hover */
+.ticker-wrap:hover .ticker-content {
+    animation-play-state: paused;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .client-logo {
+        margin: 0 20px;
+    }
+
+    .client-logo img {
+        height: 60px;
+    }
+}
