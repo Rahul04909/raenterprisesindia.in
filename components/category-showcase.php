@@ -23,8 +23,8 @@ $cats_sql = "SELECT product_categories.*, brands.name as brand_name
              ORDER BY product_categories.id DESC LIMIT 4";
 $cats_res = $conn->query($cats_sql);
 
-// 3. Fetch Products (Limit 10)
-$prods_sql = "SELECT * FROM products WHERE is_price_enabled = 1 ORDER BY id DESC LIMIT 10";
+// 3. Fetch Products (Limit 10) - Removed is_price_enabled restriction to show all
+$prods_sql = "SELECT * FROM products ORDER BY id DESC LIMIT 10";
 $prods_res = $conn->query($prods_sql);
 ?>
 
@@ -96,7 +96,7 @@ $prods_res = $conn->query($prods_sql);
                     <?php while($prod = $prods_res->fetch_assoc()): 
                         // Calculate Discount
                         $off_per = 0;
-                        if($prod['mrp'] > 0 && $prod['sale_price'] > 0 && $prod['mrp'] > $prod['sale_price']) {
+                        if($prod['is_price_enabled'] && $prod['mrp'] > 0 && $prod['sale_price'] > 0 && $prod['mrp'] > $prod['sale_price']) {
                             $off_per = round((($prod['mrp'] - $prod['sale_price']) / $prod['mrp']) * 100);
                         }
                     ?>
@@ -119,11 +119,15 @@ $prods_res = $conn->query($prods_sql);
                             </div>
 
                             <div class="cat-prod-price-box">
-                                <span class="cat-prod-price">₹<?php echo number_format($prod['sale_price']); ?></span>
-                                <?php if($off_per > 0): ?>
-                                    <br>
-                                    <span class="cat-prod-mrp">₹<?php echo number_format($prod['mrp']); ?></span>
-                                    <span class="cat-prod-off"><?php echo $off_per; ?>% OFF</span>
+                                <?php if($prod['is_price_enabled']): ?>
+                                    <span class="cat-prod-price">₹<?php echo number_format($prod['sale_price']); ?></span>
+                                    <?php if($off_per > 0): ?>
+                                        <br>
+                                        <span class="cat-prod-mrp">₹<?php echo number_format($prod['mrp']); ?></span>
+                                        <span class="cat-prod-off"><?php echo $off_per; ?>% OFF</span>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <span class="cat-prod-price" style="font-size: 14px; color: #0073aa;">View Details</span>
                                 <?php endif; ?>
                             </div>
                         </a>
