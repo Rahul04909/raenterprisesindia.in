@@ -1,5 +1,6 @@
 {
     "require": {
-        "ckeditor/ckeditor": "4.22.1"
+        "ckeditor/ckeditor": "4.22.1",
+        "phpmailer/phpmailer": "^7.0"
     }
 }

@@ -1,4 +1,7 @@
 <?php
+// Include Database Configuration
+include 'dbms/dbms_config.php';
+
 // Include the header
 include 'includes/header.php';
 // Include the hero slider
