@@ -6,7 +6,7 @@ $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if($id == 0) { header("Location: index.php"); exit; }
 
 // Fetch Product Details
-$sql = "SELECT p.*, b.name as brand_name, c.name as cat_name 
+$sql = "SELECT p.*, b.name as brand_name, b.logo as brand_logo, c.name as cat_name 
         FROM products p 
         LEFT JOIN brands b ON p.brand_id = b.id 
         LEFT JOIN product_categories c ON p.category_id = c.id 
@@ -88,7 +88,12 @@ include 'includes/header.php';
             <!-- Right: Info -->
             <div class="pd-info">
                 <?php if($prod['brand_name']): ?>
-                    <div class="pd-brand"><?php echo htmlspecialchars($prod['brand_name']); ?></div>
+                    <div class="pd-brand" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                        <?php if(!empty($prod['brand_logo'])): ?>
+                            <img src="<?php echo htmlspecialchars($prod['brand_logo']); ?>" style="height:30px; width:auto;" alt="<?php echo htmlspecialchars($prod['brand_name']); ?>">
+                        <?php endif; ?>
+                        <span><?php echo htmlspecialchars($prod['brand_name']); ?></span>
+                    </div>
                 <?php endif; ?>
                 
                 <h1 class="pd-title"><?php echo htmlspecialchars($prod['name']); ?></h1>
@@ -116,13 +121,12 @@ include 'includes/header.php';
                         <span class="pd-price" style="font-size:20px; color:#0073aa;">Price on Request</span>
                     <?php endif; ?>
                 </div>
-                
-                <div class="pd-short-desc">
-                    <?php 
-                    // Strip HTML for short desc and limit
-                    $desc_txt = strip_tags($prod['description']);
-                    echo substr($desc_txt, 0, 150) . (strlen($desc_txt) > 150 ? '...' : ''); 
-                    ?>
+
+                <div class="pd-social-share" style="margin-bottom: 20px;">
+                    <span style="font-weight:600; font-size:13px; margin-right:5px;">Share:</span>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>" target="_blank" class="pd-social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>&text=<?php echo urlencode($prod['name']); ?>" target="_blank" class="pd-social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>" target="_blank" class="pd-social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 
                 <div class="pd-actions">
@@ -132,13 +136,6 @@ include 'includes/header.php';
                     <a href="https://wa.me/?text=Check out this product: <?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>" target="_blank" class="pd-btn pd-btn-whatsapp">
                         <i class="fab fa-whatsapp" style="font-size:20px;"></i>
                     </a>
-                </div>
-                
-                <div class="pd-social-share">
-                    <span>Share:</span>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>" target="_blank" class="pd-social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>&text=<?php echo urlencode($prod['name']); ?>" target="_blank" class="pd-social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>" target="_blank" class="pd-social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
