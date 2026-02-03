@@ -276,9 +276,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Auto Generate Schema
-    function generateSchema() {
+    function generateSchema(imageSrc = null) {
         var name = document.getElementById('name').value;
-        var description = CKEDITOR.instances.description.getData().replace(/<[^>]*>?/gm, ''); // Strip HTML
+        var description = "";
+        
+        // Check if CKEditor instance exists and is ready
+        if (typeof CKEDITOR !== 'undefined' && CKEDITOR.instances.description) {
+            description = CKEDITOR.instances.description.getData().replace(/<[^>]*>?/gm, ''); // Strip HTML
+        } else {
+            // Fallback to textarea value if editor not defined yet
+            var descElem = document.getElementById('description');
+            if(descElem) description = descElem.value;
+        }
+        
         var isPriceEnabled = document.getElementById('is_price_enabled').checked;
         var mrp = document.getElementById('mrp').value;
         var salePrice = document.getElementById('sale_price').value;
@@ -289,17 +299,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "@type": "Product",
             "name": name,
             "description": description,
-            "sku": "",  // Optional
-            "brand": {
-                "@type": "Brand",
-                "name": "" // Ideally fetch brand name via JS or leave blank for user
-            }
+            "sku": "",  
+            "brand": { "@type": "Brand", "name": "" } // Ideally fetch brand name via JS or leave blank for user
         };
+
+        if(imageSrc) {
+             schema.image = imageSrc;
+        }
 
         if (isPriceEnabled && salePrice) {
             schema.offers = {
                 "@type": "Offer",
-                "url": "", // Current URL
+                "url": window.location.href, // Current URL
                 "priceCurrency": "INR",
                 "price": salePrice,
                 "priceValidUntil": "2025-12-31", // Default future date
@@ -307,7 +318,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             };
         }
 
-        document.getElementById('schema_markup').value = JSON.stringify(schema, null, 4);
+        var schemaElem = document.getElementById('schema_markup');
+        if(schemaElem) {
+            schemaElem.value = JSON.stringify(schema, null, 4);
+        }
     }
 </script>
 

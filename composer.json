@@ -1,5 +1,5 @@
 {
     "require": {
-        "ckeditor/ckeditor": "4.25"
+        "ckeditor/ckeditor": "4.22.1"
     }
 }

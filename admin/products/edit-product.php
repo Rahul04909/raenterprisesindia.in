@@ -272,7 +272,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     function generateSchema() {
         var name = document.getElementById('name').value;
-        var description = CKEDITOR.instances.description.getData().replace(/<[^>]*>?/gm, ''); // Strip HTML
+        var description = "";
+        
+        if (typeof CKEDITOR !== 'undefined' && CKEDITOR.instances.description) {
+            description = CKEDITOR.instances.description.getData().replace(/<[^>]*>?/gm, ''); 
+        } else {
+             var descElem = document.getElementById('description');
+             if(descElem) description = descElem.value;
+        }
+
         var isPriceEnabled = document.getElementById('is_price_enabled').checked;
         var mrp = document.getElementById('mrp').value;
         var salePrice = document.getElementById('sale_price').value;
@@ -289,7 +297,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isPriceEnabled && salePrice) {
             schema.offers = {
                 "@type": "Offer",
-                "url": "", 
+                "url": window.location.href, 
                 "priceCurrency": "INR",
                 "price": salePrice,
                 "priceValidUntil": "2025-12-31",
@@ -297,7 +305,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             };
         }
 
-        document.getElementById('schema_markup').value = JSON.stringify(schema, null, 4);
+        var schemaElem = document.getElementById('schema_markup');
+        if(schemaElem) {
+             schemaElem.value = JSON.stringify(schema, null, 4);
+        }
     }
 </script>
 
