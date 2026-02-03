@@ -91,6 +91,14 @@ function isActive($page) {
                 <div class="menu-text">Settings</div>
             </a>
         </li>
+
+        <!-- Logout -->
+        <li>
+            <a href="logout.php">
+                <div class="sidebar-icon"><i class="fas fa-sign-out-alt"></i></div>
+                <div class="menu-text">Logout</div>
+            </a>
+        </li>
     </ul>
 
     <!-- Collapse Button -->
