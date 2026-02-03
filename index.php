@@ -9,6 +9,7 @@ include 'components/hero.php';
 <main>
     <!-- Content will go here -->
     <?php include 'components/team-members.php'; ?>
+    <?php include 'components/category-showcase.php'; ?>
     <?php include 'components/our-clients.php'; ?>
 </main>
 
