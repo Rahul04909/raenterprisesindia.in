@@ -327,3 +327,63 @@
         height: 300px;
     }
 }
+
+/* Product Enquiry Form */
+.pd-enquiry-box {
+    background: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.pd-enquiry-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.pd-enquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pd-enquiry-form input,
+.pd-enquiry-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+
+.pd-enquiry-form input:focus,
+.pd-enquiry-form textarea:focus {
+    border-color: #2874f0;
+    outline: none;
+}
+
+.pd-enquiry-form button {
+    background: #fb641b;
+    /* Orange CTA */
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.pd-enquiry-form button:hover {
+    background: #ed560e;
+}

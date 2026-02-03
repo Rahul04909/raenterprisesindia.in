@@ -35,6 +35,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
     }
 }
 
+// Handle Enquiry Submission
+$enquiry_msg = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_enquiry'])) {
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $message = mysqli_real_escape_string($conn, $_POST['message']); // Optional
+    
+    $ins_enq = "INSERT INTO product_enquiries (product_id, name, email, phone, message) VALUES ($id, '$name', '$email', '$phone', '$message')";
+    if($conn->query($ins_enq) === TRUE) {
+        $enquiry_msg = "<div style='color: green; margin-bottom: 10px; font-weight: bold;'>Thank you! We will contact you soon.</div>";
+    } else {
+        $enquiry_msg = "<div style='color: red; margin-bottom: 10px;'>Error submitting enquiry.</div>";
+    }
+}
+
 // Fetch Reviews
 $reviews_sql = "SELECT * FROM product_reviews WHERE product_id = $id ORDER BY created_at DESC";
 $reviews_res = $conn->query($reviews_sql);
@@ -120,6 +136,19 @@ include 'includes/header.php';
                     <?php else: ?>
                         <span class="pd-price" style="font-size:20px; color:#0073aa;">Price on Request</span>
                     <?php endif; ?>
+                </div>
+
+                <!-- Product Enquiry Form -->
+                <div class="pd-enquiry-box">
+                    <div class="pd-enquiry-header">Get Best Quote</div>
+                    <?php echo $enquiry_msg; ?>
+                    <form action="" method="post" class="pd-enquiry-form">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="text" name="phone" placeholder="Mobile Number" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <!-- <textarea name="message" placeholder="Message (Optional)" rows="2"></textarea> -->
+                        <button type="submit" name="submit_enquiry">Submit Requirement</button>
+                    </form>
                 </div>
 
                 <div class="pd-social-share" style="margin-bottom: 20px;">
