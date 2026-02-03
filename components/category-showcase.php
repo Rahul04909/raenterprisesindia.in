@@ -127,7 +127,7 @@ $prods_res = $conn->query($prods_sql);
                                         <span class="cat-prod-off"><?php echo $off_per; ?>% OFF</span>
                                     <?php endif; ?>
                                 <?php else: ?>
-                                    <span class="cat-prod-price" style="font-size: 14px; color: #0073aa;">View Details</span>
+                                    <span class="cat-prod-price" style="font-size: 14px; color: #0073aa;">Price on Request</span>
                                 <?php endif; ?>
                             </div>
                         </a>
