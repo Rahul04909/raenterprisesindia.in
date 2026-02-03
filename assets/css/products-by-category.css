@@ -1,0 +1,186 @@
+/* Category Wise Products Section */
+.cat-wise-section {
+    padding: 30px 0;
+    background-color: #f1f3f6;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cat-wise-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Individual Category Row */
+.cat-wise-row {
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.cat-wise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cat-wise-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #212121;
+    display: flex;
+    align-items: center;
+}
+
+.cat-wise-title span {
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.cat-wise-btn {
+    background: #2874f0;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+.cat-wise-btn:hover {
+    background: #0d5dd7;
+}
+
+/* Product Grid */
+.cat-wise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* gap: 1px;  Use gap for creating grid lines if background is gray set on container, but here we use borders */
+    border-top: 1px solid #f0f0f0;
+}
+
+.cat-wise-product {
+    padding: 20px 15px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    border-right: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: box-shadow 0.2s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.cat-wise-product:hover {
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.cat-wise-img-wrap {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.cat-wise-img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.cat-wise-product:hover .cat-wise-img-wrap img {
+    transform: scale(1.05);
+}
+
+.cat-wise-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 38px;
+}
+
+.cat-wise-price-box {
+    margin-top: auto;
+}
+
+.cat-wise-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.cat-wise-mrp {
+    font-size: 13px;
+    color: #878787;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.cat-wise-off {
+    font-size: 13px;
+    color: #388e3c;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.cat-wise-req {
+    color: #2874f0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .cat-wise-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cat-wise-title {
+        font-size: 16px;
+    }
+
+    .cat-wise-header {
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cat-wise-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Keep 2 cols on mobile like Flipkart/Amazon */
+    }
+
+    .cat-wise-product {
+        padding: 10px;
+    }
+
+    .cat-wise-img-wrap {
+        height: 120px;
+    }
+
+    .cat-wise-name {
+        font-size: 12px;
+        height: 32px;
+    }
+
+    .cat-wise-price {
+        font-size: 14px;
+    }
+}

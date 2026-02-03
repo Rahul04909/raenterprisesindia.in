@@ -13,6 +13,7 @@ include 'components/hero.php';
     <!-- Content will go here -->
     <?php include 'components/team-members.php'; ?>
     <?php include 'components/category-showcase.php'; ?>
+    <?php include 'components/products-by-category.php'; ?>
     <?php include 'components/our-clients.php'; ?>
 </main>
 
