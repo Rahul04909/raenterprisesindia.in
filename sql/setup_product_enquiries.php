@@ -8,6 +8,9 @@ $sql = "CREATE TABLE IF NOT EXISTS product_enquiries (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(20) NOT NULL,
+    quantity INT(5) DEFAULT 1,
+    company_name VARCHAR(150),
+    address TEXT,
     message TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE

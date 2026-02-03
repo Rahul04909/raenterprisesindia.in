@@ -41,9 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_enquiry'])) {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $quantity = intval($_POST['quantity']);
+    $company_name = mysqli_real_escape_string($conn, $_POST['company_name']);
+    $address = mysqli_real_escape_string($conn, $_POST['address']);
     $message = mysqli_real_escape_string($conn, $_POST['message']); // Optional
     
-    $ins_enq = "INSERT INTO product_enquiries (product_id, name, email, phone, message) VALUES ($id, '$name', '$email', '$phone', '$message')";
+    $ins_enq = "INSERT INTO product_enquiries (product_id, name, email, phone, quantity, company_name, address, message) VALUES ($id, '$name', '$email', '$phone', $quantity, '$company_name', '$address', '$message')";
     if($conn->query($ins_enq) === TRUE) {
         $enquiry_msg = "<div style='color: green; margin-bottom: 10px; font-weight: bold;'>Thank you! We will contact you soon.</div>";
     } else {
@@ -146,7 +149,15 @@ include 'includes/header.php';
                         <input type="text" name="name" placeholder="Name" required>
                         <input type="text" name="phone" placeholder="Mobile Number" required>
                         <input type="email" name="email" placeholder="Email" required>
-                        <!-- <textarea name="message" placeholder="Message (Optional)" rows="2"></textarea> -->
+                        
+                        <div style="display: flex; gap: 10px; grid-column: 1 / -1;">
+                             <input type="number" name="quantity" placeholder="Qty" value="1" min="1" style="width: 80px;" required>
+                             <input type="text" name="company_name" placeholder="Company Name (Optional)" style="flex: 1;">
+                        </div>
+                        
+                        <textarea name="address" placeholder="Address (Optional)" rows="2" style="grid-column: 1 / -1;"></textarea>
+                        <textarea name="message" placeholder="Message / Specific Requirements" rows="2" style="grid-column: 1 / -1;"></textarea>
+                        
                         <button type="submit" name="submit_enquiry">Submit Requirement</button>
                     </form>
                 </div>
@@ -240,14 +251,14 @@ include 'includes/header.php';
         <?php if($related_res->num_rows > 0): ?>
         <div class="pd-related-section">
             <h2 class="cat-showcase-title">Related Products</h2>
-            <div class="pd-main-grid" style="grid-template-columns: repeat(4, 1fr); gap:15px; padding:20px; box-shadow:none; background:transparent;">
+            <div class="pd-related-grid">
                 <?php while($rel = $related_res->fetch_assoc()): ?>
-                     <a href="product-details.php?id=<?php echo $rel['id']; ?>" style="text-decoration:none; background:#fff; padding:10px; border-radius:4px; border:1px solid #eee; display:flex; flex-direction:column;">
-                        <div style="height:150px; display:flex; align-items:center; justify-content:center; margin-bottom:10px;">
-                             <img src="<?php echo htmlspecialchars($rel['image']); ?>" style="max-height:100%; max-width:100%;">
+                     <a href="product-details.php?id=<?php echo $rel['id']; ?>" class="pd-related-item">
+                        <div class="pd-related-img-box">
+                             <img src="<?php echo htmlspecialchars($rel['image']); ?>" alt="<?php echo htmlspecialchars($rel['name']); ?>">
                         </div>
-                        <div style="font-size:14px; font-weight:600; color:#333; margin-bottom:5px; height: 40px; overflow: hidden;"><?php echo htmlspecialchars($rel['name']); ?></div>
-                        <div style="color:#0073aa; font-weight:bold;">
+                        <div class="pd-related-name" title="<?php echo htmlspecialchars($rel['name']); ?>"><?php echo htmlspecialchars($rel['name']); ?></div>
+                        <div class="pd-related-price">
                             <?php echo $rel['is_price_enabled'] ? '₹'.number_format($rel['sale_price']) : 'View Details'; ?>
                         </div>
                      </a>
