@@ -100,7 +100,7 @@ $prods_res = $conn->query($prods_sql);
                             $off_per = round((($prod['mrp'] - $prod['sale_price']) / $prod['mrp']) * 100);
                         }
                     ?>
-                        <a href="product-detail.php?id=<?php echo $prod['id']; ?>" class="cat-product-card">
+                        <a href="product-details.php?id=<?php echo $prod['id']; ?>" class="cat-product-card">
                             <div class="cat-prod-img-wrap">
                                 <?php if(!empty($prod['image'])): ?>
                                     <img src="<?php echo htmlspecialchars($prod['image']); ?>" alt="<?php echo htmlspecialchars($prod['name']); ?>">
