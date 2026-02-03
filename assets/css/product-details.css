@@ -330,60 +330,88 @@
 
 /* Product Enquiry Form */
 .pd-enquiry-box {
-    background: #fdfdfd;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    /* Softer, deeper shadow */
+    border-left: 5px solid #ff9f00;
+    /* Accent border */
 }
 
 .pd-enquiry-header {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #ddd;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .pd-enquiry-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two columns */
+    gap: 15px;
 }
 
 .pd-enquiry-form input,
 .pd-enquiry-form textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    padding: 12px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
     font-size: 14px;
+    color: #333;
     box-sizing: border-box;
-    transition: border 0.3s;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
 }
 
 .pd-enquiry-form input:focus,
 .pd-enquiry-form textarea:focus {
     border-color: #2874f0;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(40, 116, 240, 0.1);
     outline: none;
 }
 
+/* Specific Layout Adjustments */
+.pd-enquiry-form input[name="email"] {
+    grid-column: 1 / -1;
+}
+
+/* Make email take full width if needed, or keep 2 cols. Let's make button full width */
 .pd-enquiry-form button {
-    background: #fb641b;
-    /* Orange CTA */
+    grid-column: 1 / -1;
+    /* Full width */
+    background: linear-gradient(45deg, #ff9f00, #fb641b);
+    /* Gradient CTA */
     color: #fff;
-    padding: 12px;
+    padding: 14px;
     border: none;
-    border-radius: 3px;
-    font-weight: 600;
-    font-size: 14px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 15px;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background 0.3s;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(251, 100, 27, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .pd-enquiry-form button:hover {
-    background: #ed560e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(251, 100, 27, 0.4);
+}
+
+/* Mobile responsive adjustments for form */
+@media (max-width: 600px) {
+    .pd-enquiry-form {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+    }
 }
