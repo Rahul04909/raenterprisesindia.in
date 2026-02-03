@@ -1,18 +1,26 @@
 <?php
+// Determine path prefix based on current directory
+$current_dir = basename(dirname($_SERVER['PHP_SELF']));
+$pp = ($current_dir == 'brands') ? '../' : '';
+
 // Function to check active state (simple helper)
 function isActive($page) {
     // Get current file name
     $current_file = basename($_SERVER['PHP_SELF']);
+    // Check for brands section specifically
+    if ($page == 'brands/index.php' && $current_file == 'index.php' && basename(dirname($_SERVER['PHP_SELF'])) == 'brands') {
+        return 'active';
+    }
     return ($current_file == $page) ? 'active' : '';
 }
 ?>
 
 <!-- Include Sidebar CSS -->
-<link rel="stylesheet" href="assets/css/admin-sidebar.css">
+<link rel="stylesheet" href="<?php echo $pp; ?>assets/css/admin-sidebar.css">
 <!-- Font Awesome (if not already included in header) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<nav id="admin-sidebar">
+<nav id="admin-sidebar" style="height: 100vh; overflow-y: auto;">
     <div class="sidebar-header">
         <div class="sidebar-brand">
             <i class="fas fa-shield-alt"></i> RA Admin
@@ -22,9 +30,17 @@ function isActive($page) {
     <ul class="sidebar-menu">
         <!-- Dashboard -->
         <li>
-            <a href="dashboard.php" class="<?php echo isActive('dashboard.php'); ?>">
+            <a href="<?php echo $pp; ?>index.php" class="<?php echo isActive('index.php'); ?>">
                 <div class="sidebar-icon"><i class="fas fa-tachometer-alt"></i></div>
                 <div class="menu-text">Dashboard</div>
+            </a>
+        </li>
+
+        <!-- Brands (New) -->
+        <li>
+            <a href="<?php echo $pp; ?>brands/index.php" class="<?php echo isActive('brands/index.php'); ?>">
+                <div class="sidebar-icon"><i class="fas fa-tags"></i></div>
+                <div class="menu-text">Brands</div>
             </a>
         </li>
 
@@ -36,8 +52,8 @@ function isActive($page) {
                 <div class="dropdown-icon"><i class="fas fa-chevron-down"></i></div>
             </a>
             <ul class="submenu">
-                <li><a href="all-enquiries.php">All Enquiries</a></li>
-                <li><a href="add-enquiry.php">Add New</a></li>
+                <li><a href="<?php echo $pp; ?>all-enquiries.php">All Enquiries</a></li>
+                <li><a href="<?php echo $pp; ?>add-enquiry.php">Add New</a></li>
             </ul>
         </li>
 
@@ -49,15 +65,15 @@ function isActive($page) {
                 <div class="dropdown-icon"><i class="fas fa-chevron-down"></i></div>
             </a>
             <ul class="submenu">
-                <li><a href="all-students.php">All Students</a></li>
-                <li><a href="add-student.php">Add Student</a></li>
-                <li><a href="student-attendance.php">Attendance</a></li>
+                <li><a href="<?php echo $pp; ?>all-students.php">All Students</a></li>
+                <li><a href="<?php echo $pp; ?>add-student.php">Add Student</a></li>
+                <li><a href="<?php echo $pp; ?>student-attendance.php">Attendance</a></li>
             </ul>
         </li>
 
         <!-- Staff/Team -->
         <li>
-            <a href="staff.php" class="<?php echo isActive('staff.php'); ?>">
+            <a href="<?php echo $pp; ?>staff.php" class="<?php echo isActive('staff.php'); ?>">
                 <div class="sidebar-icon"><i class="fas fa-users"></i></div>
                 <div class="menu-text">Our Team</div>
             </a>
@@ -71,14 +87,14 @@ function isActive($page) {
                 <div class="dropdown-icon"><i class="fas fa-chevron-down"></i></div>
             </a>
             <ul class="submenu">
-                <li><a href="exam-schedule.php">Exam Schedule</a></li>
-                <li><a href="exam-results.php">Results</a></li>
+                <li><a href="<?php echo $pp; ?>exam-schedule.php">Exam Schedule</a></li>
+                <li><a href="<?php echo $pp; ?>exam-results.php">Results</a></li>
             </ul>
         </li>
 
          <!-- Media/Gallery -->
          <li>
-            <a href="media.php">
+            <a href="<?php echo $pp; ?>media.php">
                 <div class="sidebar-icon"><i class="fas fa-images"></i></div>
                 <div class="menu-text">Media & Banners</div>
             </a>
@@ -86,7 +102,7 @@ function isActive($page) {
 
         <!-- Settings -->
         <li>
-            <a href="settings.php">
+            <a href="<?php echo $pp; ?>settings.php">
                 <div class="sidebar-icon"><i class="fas fa-cog"></i></div>
                 <div class="menu-text">Settings</div>
             </a>
@@ -94,7 +110,7 @@ function isActive($page) {
 
         <!-- Logout -->
         <li>
-            <a href="logout.php">
+            <a href="<?php echo $pp; ?>logout.php">
                 <div class="sidebar-icon"><i class="fas fa-sign-out-alt"></i></div>
                 <div class="menu-text">Logout</div>
             </a>
