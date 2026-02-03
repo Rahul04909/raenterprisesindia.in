@@ -44,6 +44,14 @@ function isActive($page) {
             </a>
         </li>
 
+        <!-- Product Categories (New) -->
+        <li>
+            <a href="<?php echo $pp; ?>product-categories/index.php" class="<?php echo isActive('product-categories/index.php'); ?>">
+                <div class="sidebar-icon"><i class="fas fa-list-ul"></i></div>
+                <div class="menu-text">Product Categories</div>
+            </a>
+        </li>
+
         <!-- Enquiries (With Submenu) -->
         <li class="has-submenu">
             <a href="#">
