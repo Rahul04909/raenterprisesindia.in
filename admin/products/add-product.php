@@ -60,6 +60,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ($brand_id, $category_id, '$name', '$image_path', '$description', $is_price_enabled, $mrp, $sale_price, '$meta_title', '$meta_description', '$meta_keywords', '$schema_markup')";
         
         if ($conn->query($sql) === TRUE) {
+            $product_id = $conn->insert_id;
+            
+            // Gallery Upload Handling
+            if(isset($_FILES['gallery']) && !empty($_FILES['gallery']['name'][0])) {
+                $gallery_target_dir = "../../assets/uploads/products/gallery/";
+                if (!file_exists($gallery_target_dir)) { mkdir($gallery_target_dir, 0777, true); }
+                
+                $countfiles = count($_FILES['gallery']['name']);
+                
+                for($i=0; $i<$countfiles; $i++){
+                   $filename = time() . "_" . $i . "_" . basename($_FILES['gallery']['name'][$i]);
+                   $target_file = $gallery_target_dir . $filename;
+                   
+                   if(move_uploaded_file($_FILES['gallery']['tmp_name'][$i], $target_file)){
+                       $db_path = "assets/uploads/products/gallery/" . $filename;
+                       $conn->query("INSERT INTO product_images (product_id, image_path) VALUES ($product_id, '$db_path')");
+                   }
+                }
+            }
+
             $msg = "Product created successfully. <a href='index.php'>View All</a>";
         } else {
             $error = "Error: " . $conn->error;
@@ -242,6 +262,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div id="image-preview" style="margin-top: 10px; max-width: 100%; border: 1px dashed #ddd; min-height: 50px; display: flex; align-items: center; justify-content: center; background: #fafafa;">
                                 <span style="color: #ccc; font-size: 12px;">Preview</span>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="meta-box">
+                        <div class="meta-box-header">Product Gallery</div>
+                        <div class="meta-box-body">
+                            <input type="file" name="gallery[]" id="gallery" multiple>
+                            <p style="font-size: 12px; color: #666; margin-top: 5px;">Hold Ctrl to select multiple images.</p>
                         </div>
                     </div>
                 </div>

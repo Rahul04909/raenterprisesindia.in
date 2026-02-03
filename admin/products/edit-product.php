@@ -17,11 +17,27 @@ $cats_res = $conn->query("SELECT id, name FROM product_categories ORDER BY name 
 $categories = [];
 while($c = $cats_res->fetch_assoc()) { $categories[] = $c; }
 
-// Fetch Product Data
+// Handle Gallery Image Delete
+if(isset($_GET['del_img'])) {
+    $img_id = intval($_GET['del_img']);
+    $img_res = $conn->query("SELECT * FROM product_images WHERE id=$img_id AND product_id=$id");
+    if($img_res->num_rows > 0) {
+        $img_row = $img_res->fetch_assoc();
+        // Optional: unlink("../../" . $img_row['image_path']);
+        $conn->query("DELETE FROM product_images WHERE id=$img_id");
+        $msg = "Image deleted.";
+    }
+}
+
+// Fetch Existing Product Data
 $sql = "SELECT * FROM products WHERE id = $id";
 $result = $conn->query($sql);
 if($result->num_rows == 0) { die("Product not found"); }
 $row = $result->fetch_assoc();
+
+// Fetch Gallery Images
+$gallery_res = $conn->query("SELECT * FROM product_images WHERE product_id = $id");
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -68,10 +84,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE id=$id";
         
         if ($conn->query($update_sql) === TRUE) {
+            
+            // Gallery Upload Handling
+            if(isset($_FILES['gallery']) && !empty($_FILES['gallery']['name'][0])) {
+                $gallery_target_dir = "../../assets/uploads/products/gallery/";
+                if (!file_exists($gallery_target_dir)) { mkdir($gallery_target_dir, 0777, true); }
+                
+                $countfiles = count($_FILES['gallery']['name']);
+                
+                for($i=0; $i<$countfiles; $i++){
+                   $filename = time() . "_" . $i . "_" . basename($_FILES['gallery']['name'][$i]);
+                   $target_file = $gallery_target_dir . $filename;
+                   
+                   if(move_uploaded_file($_FILES['gallery']['tmp_name'][$i], $target_file)){
+                       $db_path = "assets/uploads/products/gallery/" . $filename;
+                       $conn->query("INSERT INTO product_images (product_id, image_path) VALUES ($id, '$db_path')");
+                   }
+                }
+            }
+
             $msg = "Product updated successfully. <a href='index.php'>Go Back</a>";
             // Refresh
             $result = $conn->query("SELECT * FROM products WHERE id = $id");
             $row = $result->fetch_assoc();
+            $gallery_res = $conn->query("SELECT * FROM product_images WHERE product_id = $id");
         } else {
             $error = "Error: " . $conn->error;
         }
@@ -251,6 +287,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php if(!empty($row['image'])): ?>
                                 <img src="../../<?php echo htmlspecialchars($row['image']); ?>" class="current-img">
                             <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <div class="meta-box">
+                        <div class="meta-box-header">Product Gallery</div>
+                        <div class="meta-box-body">
+                            <input type="file" name="gallery[]" id="gallery" multiple>
+                            <p style="font-size: 12px; color: #666; margin-top: 5px;">Hold Ctrl to select multiple images.</p>
+                            
+                            <div style="margin-top: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                <?php 
+                                $gallery_res->data_seek(0);
+                                while($img = $gallery_res->fetch_assoc()): 
+                                ?>
+                                    <div style="position: relative; border: 1px solid #ddd; padding: 2px;">
+                                        <img src="../../<?php echo htmlspecialchars($img['image_path']); ?>" style="width: 100%; height: 60px; object-fit: cover;">
+                                        <a href="?id=<?php echo $id; ?>&del_img=<?php echo $img['id']; ?>" onclick="return confirm('Delete this image?')" style="position: absolute; top: -5px; right: -5px; background: red; color: #fff; border-radius: 50%; width: 18px; height: 18px; text-align: center; line-height: 18px; text-decoration: none; font-size: 12px;">&times;</a>
+                                    </div>
+                                <?php endwhile; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
