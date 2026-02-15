@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /dbms/
+Disallow: /sql/
+Disallow: /vendor/
+Allow: /assets/
+Allow: /components/
+
+Sitemap: https://raenterprisesindia.in/sitemap.xml

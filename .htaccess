@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirect sitemap.xml to sitemap.php
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Prevent directory listing
+Options -Indexes
+
+# Custom Error Pages (Optional)
+# ErrorDocument 404 /404.php
