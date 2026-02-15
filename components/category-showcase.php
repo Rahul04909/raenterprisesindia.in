@@ -70,7 +70,7 @@ $prods_res = $conn->query($prods_sql);
                  <?php if($cats_res->num_rows > 0): ?>
                     <?php while($cat = $cats_res->fetch_assoc()): ?>
                         <a href="products.php?cat=<?php echo $cat['id']; ?>" class="cat-feat-card">
-                            <div class="cat-feat-img-box" style="width:100%; height:100px; display:flex; align-items:center; justify-content:center;">
+                            <div class="cat-feat-img-box">
                                 <?php if(!empty($cat['image'])): ?>
                                     <img src="<?php echo htmlspecialchars($cat['image']); ?>" class="cat-feat-img" alt="<?php echo htmlspecialchars($cat['name']); ?>">
                                 <?php else: ?>
