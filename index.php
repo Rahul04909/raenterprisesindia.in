@@ -11,10 +11,11 @@ include 'components/hero.php';
 <!-- Main Content (Currently Empty/Hidden) -->
 <main>
     <!-- Content will go here -->
-    <?php include 'components/team-members.php'; ?>
+    <?php include 'components/brands.php'; ?>
     <?php include 'components/category-showcase.php'; ?>
     <?php include 'components/products-by-category.php'; ?>
     <?php include 'components/our-clients.php'; ?>
+    <?php include 'components/team-members.php'; ?>
 </main>
 
 <?php
