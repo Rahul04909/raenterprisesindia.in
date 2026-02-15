@@ -63,10 +63,10 @@
                         </div>
                         <ul class="nav-list">
                             <li><a href="/index.php">Home</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <!-- <li><a href="products.html">Products</a></li> -->
-                <li><a href="products.html">Shop</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="/about-us.html">About Us</a></li>
+                <!-- <li><a href="/products.html">Products</a></li> -->
+                <li><a href="/products.html">Shop</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
                             <li><a href="#" class="nav-link">Contact</a></li>
                         </ul>
                         <a href="#" class="desktop-btn">Get Quote</a>
