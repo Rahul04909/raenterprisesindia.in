@@ -298,13 +298,19 @@
 
 @media (max-width: 600px) {
     .cat-feat-grid {
-        grid-template-columns: 1fr;
-        /* Stack categories in mobile for clearer view OR scroll */
-        grid-auto-flow: column;
-        grid-template-columns: 80%;
-        overflow-x: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-        padding-bottom: 10px;
+        overflow-x: visible;
+        grid-auto-flow: row;
+        padding-bottom: 0;
+    }
+
+    /* Ensure cards stretch to fill height */
+    .cat-feat-card {
+        height: 100%;
+        min-height: 220px;
+        /* Enforce a minimum height for consistency */
     }
 
     .cat-brands-box {
