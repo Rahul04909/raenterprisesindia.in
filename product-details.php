@@ -81,7 +81,7 @@ include 'includes/header.php';
         <!-- Breadcrumb -->
         <div class="pd-breadcrumb">
             <a href="/index.php">Home</a> <span>/</span> 
-            <a href="/category/<?php echo $prod['category_id']; ?>.html"><?php echo htmlspecialchars($prod['cat_name']); ?></a> <span>/</span>
+            <a href="/products.php?cat=<?php echo $prod['category_id']; ?>"><?php echo htmlspecialchars($prod['cat_name']); ?></a> <span>/</span>
             <?php echo htmlspecialchars($prod['name']); ?>
         </div>
         
@@ -258,7 +258,7 @@ include 'includes/header.php';
                     $r_img = $rel['image'];
                     if (!empty($r_img) && strpos($r_img, 'http') !== 0 && strpos($r_img, '/') !== 0) { $r_img = '/' . $r_img; }
                 ?>
-                     <a href="/product/<?php echo $rel['id']; ?>.html" class="pd-related-item">
+                     <a href="/product-details.php?id=<?php echo $rel['id']; ?>" class="pd-related-item">
                         <div class="pd-related-img-box">
                              <img src="<?php echo htmlspecialchars($r_img); ?>" alt="<?php echo htmlspecialchars($rel['name']); ?>">
                         </div>

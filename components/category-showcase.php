@@ -36,7 +36,7 @@ $prods_res = $conn->query($prods_sql);
         <!-- Header -->
         <div class="cat-showcase-header">
             <h2 class="cat-showcase-title"><?php echo htmlspecialchars($showcase_title); ?></h2>
-            <a href="/products.html" class="cat-showcase-btn">VIEW ALL</a>
+            <a href="/products.php" class="cat-showcase-btn">VIEW ALL</a>
         </div>
 
         <!-- Top Row: Brands & Categories -->
@@ -48,7 +48,7 @@ $prods_res = $conn->query($prods_sql);
                 <div class="cat-brands-grid">
                     <?php if($brands_res->num_rows > 0): ?>
                         <?php while($brand = $brands_res->fetch_assoc()): ?>
-                            <a href="/products.html?brands[]=<?php echo $brand['id']; ?>" class="cat-brand-item">
+                            <a href="/products.php?brands[]=<?php echo $brand['id']; ?>" class="cat-brand-item">
                                 <div class="cat-brand-logo-wrap">
                                     <?php if(!empty($brand['logo'])): ?>
                                         <img src="<?php echo htmlspecialchars($brand['logo']); ?>" alt="<?php echo htmlspecialchars($brand['name']); ?>">
@@ -69,7 +69,7 @@ $prods_res = $conn->query($prods_sql);
             <div class="cat-feat-grid">
                  <?php if($cats_res->num_rows > 0): ?>
                     <?php while($cat = $cats_res->fetch_assoc()): ?>
-                        <a href="/category/<?php echo $cat['id']; ?>.html" class="cat-feat-card">
+                        <a href="/products.php?cat=<?php echo $cat['id']; ?>" class="cat-feat-card">
                             <div class="cat-feat-img-box">
                                 <?php if(!empty($cat['image'])): ?>
                                     <img src="<?php echo htmlspecialchars($cat['image']); ?>" class="cat-feat-img" alt="<?php echo htmlspecialchars($cat['name']); ?>">
@@ -100,7 +100,7 @@ $prods_res = $conn->query($prods_sql);
                             $off_per = round((($prod['mrp'] - $prod['sale_price']) / $prod['mrp']) * 100);
                         }
                     ?>
-                        <a href="/product/<?php echo $prod['id']; ?>.html" class="cat-product-card">
+                        <a href="/product-details.php?id=<?php echo $prod['id']; ?>" class="cat-product-card">
                             <div class="cat-prod-img-wrap">
                                 <?php if(!empty($prod['image'])): ?>
                                     <img src="<?php echo htmlspecialchars($prod['image']); ?>" alt="<?php echo htmlspecialchars($prod['name']); ?>">
