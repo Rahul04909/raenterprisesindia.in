@@ -2,7 +2,7 @@
 // Determine path prefix based on current directory
 $current_dir = basename(dirname($_SERVER['PHP_SELF']));
 // List of admin subdirectories that require moving up one level
-$admin_subdirs = ['brands', 'product-categories', 'products', 'quotes'];
+$admin_subdirs = ['brands', 'product-categories', 'products', 'quotes', 'enquiries'];
 $pp = (in_array($current_dir, $admin_subdirs)) ? '../' : '';
 
 // Function to check active state (helper)
@@ -86,8 +86,8 @@ function isActive($page) {
                 <div class="dropdown-icon"><i class="fas fa-chevron-down"></i></div>
             </a>
             <ul class="submenu">
-                <li><a href="<?php echo $pp; ?>all-enquiries.php">All Enquiries</a></li>
-                <li><a href="<?php echo $pp; ?>add-enquiry.php">Add New</a></li>
+                <li><a href="<?php echo $pp; ?>enquiries/index.php">All Enquiries</a></li>
+                <!-- <li><a href="<?php echo $pp; ?>add-enquiry.php">Add New</a></li> -->
             </ul>
         </li>
 
