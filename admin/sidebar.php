@@ -95,19 +95,6 @@ function isActive($page) {
             </a>
         </li>
 
-        <!-- Exams -->
-        <li class="has-submenu">
-            <a href="#">
-                <div class="sidebar-icon"><i class="fas fa-file-alt"></i></div>
-                <div class="menu-text">Examinations</div>
-                <div class="dropdown-icon"><i class="fas fa-chevron-down"></i></div>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo $pp; ?>exam-schedule.php">Exam Schedule</a></li>
-                <li><a href="<?php echo $pp; ?>exam-results.php">Results</a></li>
-            </ul>
-        </li>
-
          <!-- Media/Gallery -->
          <li>
             <a href="<?php echo $pp; ?>media.php">
