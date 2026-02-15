@@ -1,17 +1,35 @@
 <?php
 // Determine path prefix based on current directory
 $current_dir = basename(dirname($_SERVER['PHP_SELF']));
-$pp = ($current_dir == 'brands') ? '../' : '';
+// List of admin subdirectories that require moving up one level
+$admin_subdirs = ['brands', 'product-categories', 'products', 'quotes'];
+$pp = (in_array($current_dir, $admin_subdirs)) ? '../' : '';
 
-// Function to check active state (simple helper)
+// Function to check active state (helper)
 function isActive($page) {
-    // Get current file name
+    global $pp; // Use global path prefix if needed logic depends on it
     $current_file = basename($_SERVER['PHP_SELF']);
-    // Check for brands section specifically
-    if ($page == 'brands/index.php' && $current_file == 'index.php' && basename(dirname($_SERVER['PHP_SELF'])) == 'brands') {
+    $current_dir = basename(dirname($_SERVER['PHP_SELF']));
+    
+    // Check for exact matches including subdirectory
+    if ($page == $current_dir . '/' . $current_file) {
         return 'active';
     }
-    return ($current_file == $page) ? 'active' : '';
+    
+    // Existing logic backup
+    // Check for brands section specifically
+    if ($page == 'brands/index.php' && $current_dir == 'brands') {
+        return 'active';
+    }
+    if ($page == 'product-categories/index.php' && $current_dir == 'product-categories') {
+        return 'active';
+    }
+    if ($page == 'products/index.php' && $current_dir == 'products') {
+        return 'active';
+    }
+
+    // Default check
+    return ($current_file == $page || (strpos($page, '/') !== false && basename($page) == $current_file)) ? 'active' : '';
 }
 ?>
 
