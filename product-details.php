@@ -170,14 +170,7 @@ include 'includes/header.php';
                     <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>" target="_blank" class="pd-social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 
-                <div class="pd-actions">
-                    <a href="contact.php?subject=Quote for <?php echo urlencode($prod['name']); ?>" class="pd-btn pd-btn-quote">
-                        <i class="fas fa-paper-plane" style="margin-right:5px;"></i> Get a Quote
-                    </a>
-                    <a href="https://wa.me/?text=Check out this product: <?php echo urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); ?>" target="_blank" class="pd-btn pd-btn-whatsapp">
-                        <i class="fab fa-whatsapp" style="font-size:20px;"></i>
-                    </a>
-                </div>
+                <!-- Buttons Removed as per request -->
             </div>
         </div>
         
