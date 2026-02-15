@@ -74,14 +74,14 @@ $related_res = $conn->query($related_sql);
 include 'includes/header.php';
 ?>
 
-<link rel="stylesheet" href="assets/css/product-details.css">
+<link rel="stylesheet" href="/assets/css/product-details.css">
 
 <section class="pd-section">
     <div class="pd-container">
         <!-- Breadcrumb -->
         <div class="pd-breadcrumb">
-            <a href="index.php">Home</a> <span>/</span> 
-            <a href="products.php?cat=<?php echo $prod['category_id']; ?>"><?php echo htmlspecialchars($prod['cat_name']); ?></a> <span>/</span>
+            <a href="/index.php">Home</a> <span>/</span> 
+            <a href="/category/<?php echo $prod['category_id']; ?>.html"><?php echo htmlspecialchars($prod['cat_name']); ?></a> <span>/</span>
             <?php echo htmlspecialchars($prod['name']); ?>
         </div>
         
@@ -90,7 +90,11 @@ include 'includes/header.php';
             <div class="pd-gallery">
                 <div class="pd-main-image-wrap">
                     <?php 
-                    $main_img = !empty($prod['image']) ? $prod['image'] : 'assets/images/placeholder.jpg'; // Fallback needed
+                    $main_img = !empty($prod['image']) ? $prod['image'] : '/assets/images/placeholder.jpg'; // Fallback needed
+                    // Ensure image paths are absolute if stored relatively in DB
+                    if (!empty($prod['image']) && strpos($prod['image'], 'http') !== 0 && strpos($prod['image'], '/') !== 0) {
+                        $main_img = '/' . $main_img; 
+                    }
                     ?>
                     <img src="<?php echo htmlspecialchars($main_img); ?>" id="mainImage" class="pd-main-image" alt="<?php echo htmlspecialchars($prod['name']); ?>">
                 </div>
@@ -99,8 +103,11 @@ include 'includes/header.php';
                     <!-- Main Image Thumb -->
                     <img src="<?php echo htmlspecialchars($main_img); ?>" class="pd-thumb active" onclick="changeImage(this.src, this)">
                     
-                    <?php while($img = $gallery_res->fetch_assoc()): ?>
-                        <img src="<?php echo htmlspecialchars($img['image_path']); ?>" class="pd-thumb" onclick="changeImage(this.src, this)">
+                    <?php while($img = $gallery_res->fetch_assoc()): 
+                        $g_img = $img['image_path'];
+                        if (strpos($g_img, 'http') !== 0 && strpos($g_img, '/') !== 0) { $g_img = '/' . $g_img; }
+                    ?>
+                        <img src="<?php echo htmlspecialchars($g_img); ?>" class="pd-thumb" onclick="changeImage(this.src, this)">
                     <?php endwhile; ?>
                 </div>
             </div>
@@ -246,10 +253,14 @@ include 'includes/header.php';
         <div class="pd-related-section">
             <h2 class="cat-showcase-title">Related Products</h2>
             <div class="pd-related-grid">
-                <?php while($rel = $related_res->fetch_assoc()): ?>
-                     <a href="product-details.php?id=<?php echo $rel['id']; ?>" class="pd-related-item">
+            <div class="pd-related-grid">
+                <?php while($rel = $related_res->fetch_assoc()): 
+                    $r_img = $rel['image'];
+                    if (!empty($r_img) && strpos($r_img, 'http') !== 0 && strpos($r_img, '/') !== 0) { $r_img = '/' . $r_img; }
+                ?>
+                     <a href="/product/<?php echo $rel['id']; ?>.html" class="pd-related-item">
                         <div class="pd-related-img-box">
-                             <img src="<?php echo htmlspecialchars($rel['image']); ?>" alt="<?php echo htmlspecialchars($rel['name']); ?>">
+                             <img src="<?php echo htmlspecialchars($r_img); ?>" alt="<?php echo htmlspecialchars($rel['name']); ?>">
                         </div>
                         <div class="pd-related-name" title="<?php echo htmlspecialchars($rel['name']); ?>"><?php echo htmlspecialchars($rel['name']); ?></div>
                         <div class="pd-related-price">

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RA ENTERPRISES - Complete IT Solution Provider</title>
-    <link rel="stylesheet" href="assets/css/style.css?v=1.1">
-    <link rel="stylesheet" href="assets/css/hero.css?v=1.1">
-    <link rel="stylesheet" href="assets/css/team-members.css?v=1.1">
-    <link rel="stylesheet" href="assets/css/clients.css?v=1.0">
-    <link rel="stylesheet" href="assets/css/footer.css?v=1.1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1.1">
+    <link rel="stylesheet" href="/assets/css/hero.css?v=1.1">
+    <link rel="stylesheet" href="/assets/css/team-members.css?v=1.1">
+    <link rel="stylesheet" href="/assets/css/clients.css?v=1.0">
+    <link rel="stylesheet" href="/assets/css/footer.css?v=1.1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -50,9 +50,9 @@
                 <div class="nav-wrapper">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.php">
+                        <a href="/index.php">
                             <!-- Ensure logo path is correct relative to index.php -->
-                            <img src="assets/logo/logo.png" alt="RA ENTERPRISES Logo"> 
+                            <img src="/assets/logo/logo.png" alt="RA ENTERPRISES Logo"> 
                         </a>
                     </div>
 
@@ -62,7 +62,7 @@
                             <i class="fas fa-times"></i>
                         </div>
                         <ul class="nav-list">
-                            <li><a href="index.php">Home</a></li>
+                            <li><a href="/index.php">Home</a></li>
                 <li><a href="about-us.html">About Us</a></li>
                 <!-- <li><a href="products.html">Products</a></li> -->
                 <li><a href="products.html">Shop</a></li>

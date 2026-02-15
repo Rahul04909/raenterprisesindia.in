@@ -5,7 +5,7 @@
             <div class="footer-section">
                 <div class="footer-logo">
                     <!-- Adjusted path assuming typical include usage -->
-                    <img src="assets/logo/logo.png" alt="RA ENTERPRISES Logo">
+                    <img src="/assets/logo/logo.png" alt="RA ENTERPRISES Logo">
                 </div>
                 <p class="footer-desc">
                     We provided the best security system products at affordable prices. Our experts are always ready to help you with the best solutions.
@@ -22,10 +22,10 @@
             <div class="footer-section">
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="/index.php">Home</a></li>
+                    <li><a href="/about-us.html">About Us</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
                 </ul>
             </div>
 
