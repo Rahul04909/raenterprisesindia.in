@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
     }
 }
 
-// Handle Enquiry Submission
+// Handle Enquiry/Quote Submission
 $enquiry_msg = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_enquiry'])) {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -46,11 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_enquiry'])) {
     $address = mysqli_real_escape_string($conn, $_POST['address']);
     $message = mysqli_real_escape_string($conn, $_POST['message']); // Optional
     
-    $ins_enq = "INSERT INTO product_enquiries (product_id, name, email, phone, quantity, company_name, address, message) VALUES ($id, '$name', '$email', '$phone', $quantity, '$company_name', '$address', '$message')";
+    // Insert into product_quotes table
+    $ins_enq = "INSERT INTO product_quotes (product_id, name, email, phone, quantity, company_name, address, message) VALUES ($id, '$name', '$email', '$phone', $quantity, '$company_name', '$address', '$message')";
     if($conn->query($ins_enq) === TRUE) {
-        $enquiry_msg = "<div style='color: green; margin-bottom: 10px; font-weight: bold;'>Thank you! We will contact you soon.</div>";
+        $enquiry_msg = "<div style='color: green; margin-bottom: 10px; font-weight: bold;'>Thank you! Your quote request has been received. We will contact you soon.</div>";
     } else {
-        $enquiry_msg = "<div style='color: red; margin-bottom: 10px;'>Error submitting enquiry.</div>";
+        $enquiry_msg = "<div style='color: red; margin-bottom: 10px;'>Error submitting quote: " . $conn->error . "</div>";
     }
 }
 
