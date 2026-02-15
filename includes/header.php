@@ -62,11 +62,11 @@
                             <i class="fas fa-times"></i>
                         </div>
                         <ul class="nav-list">
-                            <li><a href="index.php" class="nav-link">Home</a></li>
-                            <li><a href="#" class="nav-link">About Us</a></li>
-                            <li><a href="#" class="nav-link">Our Products</a></li>
-                            <li><a href="#" class="nav-link">Services</a></li>
-                            <li><a href="#" class="nav-link">Blog</a></li>
+                            <li><a href="index.php">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <!-- <li><a href="products.html">Products</a></li> -->
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
                             <li><a href="#" class="nav-link">Contact</a></li>
                         </ul>
                         <a href="#" class="desktop-btn">Get Quote</a>

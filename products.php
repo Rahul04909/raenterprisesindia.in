@@ -81,7 +81,8 @@ include 'includes/header.php';
                  <span onclick="toggleSidebar()" style="cursor:pointer; font-size:20px;">&times;</span>
             </div>
 
-            <form action="products.php" method="GET" id="filterForm">
+            <br><small>URL Rewritten via .htaccess</small>
+            <form action="products.html" method="GET" id="filterForm">
                 
                 <!-- Keep search query if exists -->
                 <?php if(!empty($search_query)): ?>
@@ -93,13 +94,13 @@ include 'includes/header.php';
                     <h4 class="shop-widget-title">Categories</h4>
                     <ul class="shop-cat-list">
                         <li>
-                            <a href="products.php" class="shop-cat-link <?php echo ($category_id == 0) ? 'active' : ''; ?>">
+                            <a href="products.html" class="shop-cat-link <?php echo ($category_id == 0) ? 'active' : ''; ?>">
                                 <span>All Products</span>
                             </a>
                         </li>
                         <?php while($cat = $cat_res->fetch_assoc()): ?>
                             <li>
-                                <a href="products.php?cat=<?php echo $cat['id']; ?>" class="shop-cat-link <?php echo ($category_id == $cat['id']) ? 'active' : ''; ?>">
+                                <a href="category/<?php echo $cat['id']; ?>.html" class="shop-cat-link <?php echo ($category_id == $cat['id']) ? 'active' : ''; ?>">
                                     <span><?php echo htmlspecialchars($cat['name']); ?></span>
                                     <span class="shop-cat-count"><?php echo $cat['product_count']; ?></span>
                                 </a>
@@ -171,7 +172,7 @@ include 'includes/header.php';
                         }
                     ?>
                         <div class="shop-card">
-                            <a href="product-details.php?id=<?php echo $row['id']; ?>" class="shop-card-img-wrap">
+                            <a href="product/<?php echo $row['id']; ?>.html" class="shop-card-img-wrap">
                                 <?php if(!empty($row['image'])): ?>
                                     <img src="<?php echo htmlspecialchars($row['image']); ?>" class="shop-card-img" alt="<?php echo htmlspecialchars($row['name']); ?>">
                                 <?php else: ?>
@@ -188,7 +189,7 @@ include 'includes/header.php';
                                 ?>
                             </div>
                             <h3 class="shop-card-title">
-                                <a href="product-details.php?id=<?php echo $row['id']; ?>" style="text-decoration:none; color:inherit;">
+                                <a href="product/<?php echo $row['id']; ?>.html" style="text-decoration:none; color:inherit;">
                                     <?php echo htmlspecialchars($row['name']); ?>
                                 </a>
                             </h3>
@@ -203,7 +204,7 @@ include 'includes/header.php';
                                     <div class="shop-card-price" style="font-size:16px; color:#0073aa;">Price on Request</div>
                                 <?php endif; ?>
                             </div>
-                            <a href="product-details.php?id=<?php echo $row['id']; ?>" class="shop-card-btn">View Details</a>
+                            <a href="product/<?php echo $row['id']; ?>.html" class="shop-card-btn">View Details</a>
                         </div>
                     <?php endwhile; ?>
                 <?php else: ?>
@@ -211,7 +212,7 @@ include 'includes/header.php';
                         <i class="fas fa-search" style="font-size: 40px; color: #ddd; margin-bottom: 20px;"></i>
                         <h3>No products found</h3>
                         <p style="color: #777;">Try adjusting your filters or search query.</p>
-                        <a href="products.php" class="apply-filter-btn" style="display:inline-block; width:auto; text-decoration:none; margin-top:15px;">Clear Filters</a>
+                        <a href="products.html" class="apply-filter-btn" style="display:inline-block; width:auto; text-decoration:none; margin-top:15px;">Clear Filters</a>
                     </div>
                 <?php endif; ?>
             </div>

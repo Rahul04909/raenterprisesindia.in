@@ -1,10 +1,34 @@
 RewriteEngine On
 
-# Redirect sitemap.xml to sitemap.php
+# 1. Sitemap Rewrite
 RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# 2. Remove .php extension (External Redirect)
+# If request ends in .php, redirect to .html version
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.php[\s?] [NC]
+RewriteRule ^ %1.html [R=301,L]
+
+# 3. Handle .html extension (Internal Rewrite)
+# If request ends in .html, map to .php file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)\.html$ $1.php [L]
+
+# 4. Product Details Rewrite
+# /product/123.html -> product-details.php?id=123
+RewriteRule ^product/([0-9]+)\.html$ product-details.php?id=$1 [L]
+
+# 5. Category Rewrite
+# /category/123.html -> products.php?cat=123
+RewriteRule ^category/([0-9]+)\.html$ products.php?cat=$1 [L]
+
+# 6. Redirect old query URLs to new SEO URLs (Optional but recommended for consistency)
+# Redirect /product-details.php?id=123 to /product/123.html
+RewriteCond %{THE_REQUEST} \s/product-details\.php\?id=([0-9]+)\s [NC]
+RewriteRule ^ /product/%1.html? [R=301,L]
+
+# Redirect /products.php?cat=123 to /category/123.html
+RewriteCond %{THE_REQUEST} \s/products\.php\?cat=([0-9]+)\s [NC]
+RewriteRule ^ /category/%1.html? [R=301,L]
 
 # Prevent directory listing
 Options -Indexes
-
-# Custom Error Pages (Optional)
-# ErrorDocument 404 /404.php
